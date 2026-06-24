@@ -34,7 +34,7 @@ const fmt = (n) => Number(n).toLocaleString('es-AR');
 
 (async () => {
   console.log('═══════════════════════════════════════════════════');
-  console.log('  DIAGNÓSTICO DE STOCK — Distribuidora Patricia');
+  console.log('  DIAGNÓSTICO DE STOCK — Romano Distribuciones');
   console.log('═══════════════════════════════════════════════════\n');
 
   // ─── 1. productos ───────────────────────────────────────────────

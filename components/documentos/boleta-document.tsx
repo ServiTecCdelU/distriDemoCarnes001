@@ -204,7 +204,7 @@ export const BoletaDocument = forwardRef<HTMLDivElement, BoletaDocumentProps>(
             >
               <img
                 src="/logo-small.png"
-                alt="Distribuidora Patricia"
+                alt="Romano Distribuciones"
                 style={{ width: "90px", height: "56px", objectFit: "contain" }}
               />
               <p style={{ fontSize: "8px", marginTop: "4px" }}>COD. 001</p>

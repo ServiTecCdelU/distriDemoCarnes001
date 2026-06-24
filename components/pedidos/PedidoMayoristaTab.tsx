@@ -200,7 +200,7 @@ export function PedidoMayoristaTab() {
       "",
       ...lineas,
       "",
-      `_Distribuidora Patricia_`,
+      `_Romano Distribuciones_`,
     ].join("\n");
   };
 

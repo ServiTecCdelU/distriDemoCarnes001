@@ -13,7 +13,7 @@ RED = (0.85, 0.1, 0.1)
 BLACK = (0, 0, 0)
 
 DATA = {
-    "empresa": "Distribuidora J&J",
+    "empresa": "Romano Distribuciones",
     "numero": "transaccion_fernandezsofia_3",
     "fecha": "16/06/2026",
     "hora": "01:32 p. m.",

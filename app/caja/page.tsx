@@ -178,7 +178,7 @@ const CajaPdfDocument = ({ register, sales, losses = [], pagos = [], rejected = 
         <View style={cajaPdfStyles.header}>
           <View>
             <Text style={cajaPdfStyles.title}>Caja de Reparto</Text>
-            <Text style={cajaPdfStyles.subtitle}>Distribuidora Patricia</Text>
+            <Text style={cajaPdfStyles.subtitle}>Romano Distribuciones</Text>
           </View>
           <View style={cajaPdfStyles.headerRight}>
             <Text style={cajaPdfStyles.headerDate}>{formatDateLong(register.openedAt)}</Text>
@@ -366,7 +366,7 @@ const CajaPdfDocument = ({ register, sales, losses = [], pagos = [], rejected = 
 
         {/* Footer */}
         <View style={cajaPdfStyles.footer}>
-          <Text>Caja de Reparto - Distribuidora Patricia</Text>
+          <Text>Caja de Reparto - Romano Distribuciones</Text>
           <Text>Generado: {formatDateShort(new Date())} {formatTimeStr(new Date())}</Text>
         </View>
       </PdfPage>

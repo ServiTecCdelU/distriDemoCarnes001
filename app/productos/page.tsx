@@ -337,10 +337,10 @@ tr.cat td{border:none}
 @page{margin:0}
 @media print{body{padding:14mm}tr.cat{page-break-after:avoid}tr{page-break-inside:avoid}}
 </style></head><body>
-<div class="header"><div><h1>Distribuidora J&J</h1><div class="sub">Lista de Precios</div></div><div class="meta"><div>${fecha}</div><div>${lista.length} productos</div></div></div>
+<div class="header"><div><h1>Romano Distribuciones</h1><div class="sub">Lista de Precios</div></div><div class="meta"><div>${fecha}</div><div>${lista.length} productos</div></div></div>
 <div class="legend">Precios de venta vigentes por unidad.</div>
 <table><thead><tr><th>Código</th><th>Producto</th><th class="right">Precio</th></tr></thead><tbody>${body}</tbody></table>
-<div class="footer">Generado el ${fecha} · Distribuidora J&J</div>
+<div class="footer">Generado el ${fecha} · Romano Distribuciones</div>
 </body></html>`;
 
       printHtml(html);

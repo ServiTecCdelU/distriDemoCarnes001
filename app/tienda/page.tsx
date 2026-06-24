@@ -102,7 +102,7 @@ function LogoImage() {
       {!loaded && <div className="absolute inset-0 animate-pulse bg-primary/20 rounded-full" />}
       <Image
         src="/logo.png"
-        alt="Distribuidora Patricia"
+        alt="Romano Distribuciones"
         fill
         priority
         className={`object-contain transition-opacity duration-200 ${loaded ? "opacity-100" : "opacity-0"}`}
@@ -378,7 +378,7 @@ export function StoreFront({
                     <LogoImage />
                     <div>
                       <h1 className="text-base sm:text-xl font-bold text-foreground leading-tight">
-                        Distribuidora Patricia
+                        Romano Distribuciones
                       </h1>
                       <p className="text-[10px] sm:text-xs text-muted-foreground hidden sm:block">
                         Tienda Online

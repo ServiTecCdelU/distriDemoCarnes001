@@ -80,7 +80,7 @@ export function HeroCarousel() {
                   {!logoLoaded && <div className="absolute inset-0 animate-pulse rounded-full bg-white/20" />}
                   <Image
                     src="/logo.png"
-                    alt="Distribuidora Patricia"
+                    alt="Romano Distribuciones"
                     fill
                     priority
                     className={`object-contain animate-float transition-opacity duration-300 ${logoLoaded ? "opacity-100" : "opacity-0"}`}

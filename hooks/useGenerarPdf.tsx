@@ -1199,7 +1199,7 @@ const ReciboCopia = ({ data, copia }: { data: ReciboPagoData; copia: string }) =
       {/* Header */}
       <View style={reciboStyles.header}>
         <View>
-          <Text style={reciboStyles.brandName}>Distribuidora J&J</Text>
+          <Text style={reciboStyles.brandName}>Romano Distribuciones</Text>
           <Text style={reciboStyles.brandSub}>Comprobante de pago — no válido como factura</Text>
         </View>
         <View style={reciboStyles.headerRight}>
@@ -1279,7 +1279,7 @@ const ReciboCopia = ({ data, copia }: { data: ReciboPagoData; copia: string }) =
 
       {/* Footer */}
       <View style={reciboStyles.footer}>
-        <Text>Distribuidora J&J</Text>
+        <Text>Romano Distribuciones</Text>
         <Text>{copia}</Text>
       </View>
     </>
@@ -1349,7 +1349,7 @@ const ReciboDevolucionCopia = ({ data, copia }: { data: ReciboDevolucionData; co
       {/* Header */}
       <View style={reciboStyles.header}>
         <View>
-          <Text style={reciboStyles.brandName}>Distribuidora J&J</Text>
+          <Text style={reciboStyles.brandName}>Romano Distribuciones</Text>
           <Text style={reciboStyles.brandSub}>Comprobante de devolución — no válido como factura</Text>
         </View>
         <View style={reciboStyles.headerRight}>
@@ -1491,7 +1491,7 @@ const ReciboDescuentoCopia = ({ data, copia }: { data: ReciboDescuentoData; copi
       {/* Header */}
       <View style={reciboStyles.header}>
         <View>
-          <Text style={reciboStyles.brandName}>Distribuidora J&J</Text>
+          <Text style={reciboStyles.brandName}>Romano Distribuciones</Text>
           <Text style={reciboStyles.brandSub}>Comprobante de descuento — no válido como factura</Text>
         </View>
         <View style={reciboStyles.headerRight}>
