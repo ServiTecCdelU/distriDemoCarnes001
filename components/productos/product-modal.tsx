@@ -105,7 +105,8 @@ export function ProductModal({
     price: 0,
     stock: 0,
     imageUrl: "",
-    category: "",
+    category: "Carne Vaca",
+    lote: "",
     marca: "Sin identificar" as string,
     sinTacc: false,
   });
@@ -146,6 +147,7 @@ export function ProductModal({
         stock: product.stock,
         imageUrl: product.imageUrl || "",
         category: product.category,
+        lote: (product as any).lote || "",
         marca: (product as any).marca || "Sin identificar",
         sinTacc: (product as any).sinTacc || false,
       });
@@ -177,7 +179,8 @@ export function ProductModal({
         price: 0,
         stock: 0,
         imageUrl: "",
-        category: "",
+        category: "Carne Vaca",
+        lote: "",
         marca: "Sin identificar",
         sinTacc: false,
       });
@@ -592,6 +595,16 @@ export function ProductModal({
             </div>
           ) : (
             <>
+              {/* Código (autogenerado, solo lectura) */}
+              {isEditing && product?.codigo && (
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Código</Label>
+                  <div className="h-10 px-3 flex items-center rounded-md border border-border bg-muted/50 text-sm font-medium tabular-nums">
+                    {product.codigo}
+                  </div>
+                </div>
+              )}
+
               {/* Nombre + Descripción */}
               <div className="space-y-4">
                 <div className="space-y-2">
@@ -713,6 +726,17 @@ export function ProductModal({
                     )}
                   </div>
 
+                  {/* Lote / Presentación */}
+                  <div className="space-y-2">
+                    <Label htmlFor="lote-txt" className="text-sm font-medium">Lote</Label>
+                    <Input
+                      id="lote-txt"
+                      value={formData.lote}
+                      onChange={(e) => setFormData({ ...formData, lote: e.target.value })}
+                      placeholder="Ej: Caja x 20 kg"
+                      className="h-10"
+                    />
+                  </div>
                 </div>
               </div>
 

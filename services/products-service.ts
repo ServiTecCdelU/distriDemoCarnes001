@@ -23,6 +23,7 @@ function mapRow(d: Record<string, any>): Product {
     gananciaGlobal: d.ganancia_global != null ? Number(d.ganancia_global) : undefined,
     gananciaIndividual: d.ganancia_individual ?? undefined,
     codigo: d.codigo ?? undefined,
+    lote: d.lote ?? undefined,
     descuento: d.descuento != null ? Number(d.descuento) : 0,
     regaloMismo: d.regalo_mismo ?? false,
     regaloMismoMax: d.regalo_mismo_max != null ? Number(d.regalo_mismo_max) : null,
@@ -220,10 +221,25 @@ export const getProductById = async (id: string): Promise<Product | undefined> =
   return data ? mapRow(data) : undefined
 }
 
+// Devuelve el próximo código correlativo de 5 dígitos (00001, 00002, …).
+// Los códigos son strings con padding, así que ordenar desc por texto = orden numérico.
+async function nextCodigo(): Promise<string> {
+  const { data } = await supabase
+    .from('productos')
+    .select('codigo')
+    .not('codigo', 'is', null)
+    .order('codigo', { ascending: false })
+    .limit(1)
+  const max = data?.[0]?.codigo as string | undefined
+  const n = max ? (parseInt(max, 10) || 0) : 0
+  return String(n + 1).padStart(5, '0')
+}
+
 export const createProduct = async (
   product: Omit<Product, 'id' | 'createdAt'>
 ): Promise<Product> => {
   const docId = await generateReadableId('productos', 'producto', product.name)
+  const codigo = product.codigo?.trim() || (await nextCodigo())
   const row: Record<string, any> = {
     id: docId,
     name: product.name,
@@ -232,9 +248,10 @@ export const createProduct = async (
     stock: product.stock,
     image_url: product.imageUrl,
     category: product.category,
+    lote: product.lote ?? null,
     disabled: product.disabled ?? false,
-    code: product.codigo ?? null,
-    codigo: product.codigo ?? null,
+    code: codigo,
+    codigo: codigo,
     unidades_por_bulto: product.unidadesPorBulto ?? null,
     se_divide_en: product.seDivideEn ?? null,
     precio_venta: product.precioVenta ?? null,
@@ -244,7 +261,7 @@ export const createProduct = async (
     descuento: product.descuento ?? 0,
   }
   await supabase.from('productos').insert(row)
-  return { ...product, id: docId, disabled: product.disabled ?? false, createdAt: new Date() }
+  return { ...product, codigo, id: docId, disabled: product.disabled ?? false, createdAt: new Date() }
 }
 
 export const updateProduct = async (
@@ -258,6 +275,7 @@ export const updateProduct = async (
   if (updates.stock !== undefined) mapped.stock = updates.stock
   if (updates.imageUrl !== undefined) mapped.image_url = updates.imageUrl
   if (updates.category !== undefined) mapped.category = updates.category
+  if (updates.lote !== undefined) mapped.lote = updates.lote
   if (updates.disabled !== undefined) mapped.disabled = updates.disabled
   if (updates.codigo !== undefined) mapped.codigo = updates.codigo
   if (updates.unidadesPorBulto !== undefined) mapped.unidades_por_bulto = updates.unidadesPorBulto

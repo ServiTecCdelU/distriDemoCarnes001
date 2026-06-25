@@ -16,6 +16,7 @@ function mapDoc(d: Record<string, any>): MayoristaProducto {
     rubro: d.rubro ?? '',
     subrubro: d.subrubro ?? '',
     categoria: d.categoria ?? 'Sin categoria',
+    lote: d.lote ?? '',
     habilitado: d.habilitado ?? false,
     productoId: d.producto_id ?? undefined,
     updatedAt: new Date(d.updated_at ?? d.created_at),

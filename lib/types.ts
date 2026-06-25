@@ -32,6 +32,7 @@ export interface Product {
   gananciaGlobal?: number;     // % de ganancia aplicado
   gananciaIndividual?: boolean; // true = precio seteado individualmente
   codigo?: string;
+  lote?: string;               // Presentación/lote en texto libre (ej. "Caja x 20 kg")
   descuento?: number;          // % MÁXIMO de descuento que el vendedor puede aplicar; 0 = no admite
   regaloMismo?: boolean;       // permite regalar unidades del mismo producto
   regaloMismoMax?: number | null;   // tope de unidades a regalar (mismo); null = libre
@@ -258,6 +259,7 @@ export interface MayoristaProducto {
   rubro?: string;
   subrubro?: string;
   categoria: string;
+  lote?: string;               // Presentación/lote en texto libre (ej. "Caja x 20 kg")
   habilitado?: boolean;
   productoId?: string;
   updatedAt: Date;

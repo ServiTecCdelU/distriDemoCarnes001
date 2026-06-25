@@ -1103,32 +1103,6 @@ tr.cat td{border:none}
       <div className="mb-4 sm:mb-6">
         {/* Toolbar compacta */}
         <div className="flex flex-col items-center gap-2">
-          {/* Ganancia solo medicamentos */}
-          <div className="flex items-center gap-1.5 rounded-2xl border border-border bg-card px-3 py-1.5">
-            <Pill className="h-3.5 w-3.5 text-teal-600" />
-            <span className="text-xs font-medium text-muted-foreground">Medicamentos</span>
-            {stats.gananciaMedicamentos != null && (
-              <span className="text-xs font-semibold text-teal-600">{stats.gananciaMedicamentos}%</span>
-            )}
-            <Input
-              type="number"
-              min={0}
-              placeholder="%"
-              value={gananciaMedInput}
-              onChange={(e) => setGananciaMedInput(e.target.value)}
-              className="w-16 h-7 text-xs px-2"
-            />
-            <Button
-              size="sm"
-              disabled={applyingMed || !gananciaMedInput}
-              onClick={handleAplicarMedicamentos}
-              className="h-7 px-2 text-xs gap-1"
-            >
-              {applyingMed ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Check className="h-3.5 w-3.5" />}
-              <span className="hidden sm:inline">Aplicar</span>
-            </Button>
-          </div>
-
           <div className="flex items-center justify-center gap-2 flex-wrap">
           <div className="flex items-center gap-1.5 rounded-2xl border border-border bg-card px-3 py-1.5">
             <Percent className="h-3.5 w-3.5 text-teal-600" />
@@ -1761,8 +1735,8 @@ tr.cat td{border:none}
                                 isDisabled && "opacity-50",
                               )}
                             >
-                              <td className="px-3 py-2.5 font-mono text-xs text-muted-foreground whitespace-nowrap">
-                                {product.description || "—"}
+                              <td className="px-3 py-2.5 font-mono text-xs text-muted-foreground whitespace-nowrap tabular-nums">
+                                {product.codigo || "—"}
                               </td>
                               <td className="px-3 py-2.5 font-medium max-w-[260px] truncate">
                                 <span>{product.name}</span>
@@ -1793,44 +1767,8 @@ tr.cat td{border:none}
                                   {product.stock}
                                 </Badge>
                               </td>
-                              <td className="px-3 py-2.5 text-center">
-                                {product.unidadesPorBulto ? (
-                                  <Popover>
-                                    <PopoverTrigger asChild>
-                                      <button className="inline-flex items-center gap-1 text-xs font-medium text-teal-600 hover:text-teal-700 transition-colors">
-                                        {product.seDivideEn && product.seDivideEn > 1
-                                          ? `${Math.floor(product.unidadesPorBulto / product.seDivideEn)} lotes`
-                                          : `${product.unidadesPorBulto}u`}
-                                        <Eye className="h-3 w-3 text-muted-foreground" />
-                                      </button>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="w-52 p-3 text-xs space-y-1.5" side="left">
-                                      <p className="font-semibold text-foreground mb-2">Detalle de lote</p>
-                                      <div className="flex justify-between">
-                                        <span className="text-muted-foreground">Cantidad de unidades por bulto</span>
-                                        <span className="font-medium">{product.unidadesPorBulto}</span>
-                                      </div>
-                                      {product.seDivideEn && product.seDivideEn > 1 && (
-                                        <>
-                                          <div className="flex justify-between">
-                                            <span className="text-muted-foreground">mini bultos</span>
-                                            <span className="font-medium">{Math.floor(product.unidadesPorBulto / product.seDivideEn)}</span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="text-muted-foreground">cantidad de unidades por mini bulto</span>
-                                            <span className="font-medium">{product.seDivideEn}</span>
-                                          </div>
-                                          <div className="flex justify-between border-t pt-1.5 mt-1">
-                                            <span className="text-muted-foreground">Precio de cada mini bulto</span>
-                                            <span className="font-semibold text-teal-600">{formatCurrency(Math.round(product.price * product.seDivideEn / product.unidadesPorBulto! * 100) / 100)}</span>
-                                          </div>
-                                        </>
-                                      )}
-                                    </PopoverContent>
-                                  </Popover>
-                                ) : (
-                                  <span className="text-xs text-muted-foreground">—</span>
-                                )}
+                              <td className="px-3 py-2.5 text-center text-xs text-muted-foreground whitespace-nowrap">
+                                {(product as any).lote || "—"}
                               </td>
                               <td className="px-3 py-2.5 text-center">
                                 <div className="flex items-center justify-center gap-0.5">

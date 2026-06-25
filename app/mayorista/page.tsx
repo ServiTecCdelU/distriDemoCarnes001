@@ -452,55 +452,36 @@ function ListaPrecios({
                 <tr>
                   <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Código</th>
                   <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Descripción</th>
-                  <th className="text-right px-3 py-3 font-semibold text-muted-foreground whitespace-nowrap">
-                    Cons. Final
-                  </th>
-                  {prefs.showRubro && (
-                    <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Rubro</th>
-                  )}
-                  {prefs.showSubrubro && (
-                    <>
-                      <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Subrubro 1</th>
-                      <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Subrubro 2</th>
-                      <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Subrubro 3</th>
-                    </>
-                  )}
+                  <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Categoría</th>
+                  <th className="text-right px-3 py-3 font-semibold text-muted-foreground whitespace-nowrap">Precio</th>
+                  <th className="text-right px-3 py-3 font-semibold text-muted-foreground">Stock</th>
+                  <th className="text-left px-3 py-3 font-semibold text-muted-foreground">Lote</th>
                   <th className="text-center px-3 py-3 font-semibold text-muted-foreground">Estado</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {filasPagina.map((p) => {
-                  const [s1, s2, s3] = getSubrubros(p.subrubro ?? "");
                   return (
                     <tr
                       key={p.id}
                       className={`hover:bg-muted/20 transition-colors ${p.habilitado ? "bg-teal-50/30 dark:bg-teal-950/10" : ""}`}
                     >
-                      <td className="px-3 py-2.5 font-mono text-xs text-muted-foreground">
+                      <td className="px-3 py-2.5 font-mono text-xs text-muted-foreground tabular-nums">
                         {p.codigo}
                       </td>
                       <td className="px-3 py-2.5 font-medium max-w-[220px] truncate">{p.nombre}</td>
+                      <td className="px-3 py-2.5 text-xs text-muted-foreground whitespace-nowrap">
+                        {p.categoria || "—"}
+                      </td>
                       <td className="px-3 py-2.5 text-right font-semibold text-teal-600 whitespace-nowrap">
                         {formatCurrency(p.precioUnitarioMayorista)}
                       </td>
-                      {prefs.showRubro && (
-                        <td className="px-3 py-2.5 text-xs text-muted-foreground whitespace-nowrap">
-                          {p.rubro || "—"}
-                        </td>
-                      )}
-                      {prefs.showSubrubro && (
-                        <>
-                          <td className="px-3 py-2.5 text-xs text-muted-foreground whitespace-nowrap">
-                            {s1 || "—"}
-                          </td>
-                          <td className="px-3 py-2.5 text-xs text-muted-foreground whitespace-nowrap">
-                            {s2 || "—"}
-                          </td>
-                          <td className="px-3 py-2.5 text-xs text-muted-foreground whitespace-nowrap">
-                            {s3 || "—"}
-                          </td>
-                        </>
-                      )}
+                      <td className="px-3 py-2.5 text-right text-xs font-medium">
+                        {p.stockLocal}
+                      </td>
+                      <td className="px-3 py-2.5 text-xs text-muted-foreground whitespace-nowrap">
+                        {p.lote || "—"}
+                      </td>
                       <td className="px-3 py-2.5 text-center">
                         {p.habilitado ? (
                           <div className="flex items-center justify-center gap-1">
