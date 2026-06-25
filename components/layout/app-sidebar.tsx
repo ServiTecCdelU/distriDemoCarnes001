@@ -38,13 +38,6 @@ interface NavGroup {
   }[];
 }
 
-function getRoleLabel(user: { role: string; employeeType?: string }): string {
-  if (user.role === "admin") return "Admin";
-  if (user.employeeType === "transportista") return "Transportista";
-  if (user.employeeType === "ambos") return "Vendedor / Transportista";
-  return "Vendedor";
-}
-
 export function AppSidebar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -147,11 +140,11 @@ export function AppSidebar() {
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="font-semibold text-base text-sidebar-foreground truncate">
-                Romano Distribuciones
+                Distribuidora Demo
               </h1>
               {user && (
                 <p className="text-xs text-sidebar-foreground/50 truncate">
-                  {getRoleLabel(user)} · {user.name?.split(" ")[0] || user.email?.split("@")[0]}
+                  Admin Demo
                 </p>
               )}
             </div>
